@@ -1,4 +1,3 @@
-import React from 'react';
 import { Download, ArrowRight, Store } from "lucide-react";
 import { motion } from 'motion/react';
 import { useState } from 'react';
@@ -56,20 +55,18 @@ export function DownloadCard({ platform, icon, downloadUrl, description, storeLi
             {platform}
           </h3>
           
-          {/* 描述 - 固定两行文字高度确保对齐，靠上对齐 */}
-          <div className="mb-8 flex-shrink-0 h-14 flex items-start justify-center">
-            <p className="text-gray-400 text-sm leading-relaxed text-center px-2">
-              {description}
-            </p>
-          </div>
+          {/* 描述 */}
+          <p className="text-gray-400 mb-8 text-sm leading-relaxed flex-shrink-0">
+            {description}
+          </p>
           
           {/* 按钮区域 - 占据剩余空间并底部对齐 */}
-          <div className="w-full mt-auto flex flex-col">
-            {/* 主要按钮：Direct Download 或 App Store（iOS） */}
-            {downloadUrl ? (
+          <div className="w-full mt-auto flex flex-col space-y-3">
+            {/* 下载按钮 */}
+            {downloadUrl && (
               <button
                 onClick={() => window.open(downloadUrl, '_blank')}
-                className="w-full group/btn relative overflow-hidden rounded-xl px-6 py-3 min-h-[3rem] bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white transition-all duration-300 shadow-lg hover:shadow-violet-500/50"
+                className="w-full group/btn relative overflow-hidden rounded-xl px-6 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white transition-all duration-300 shadow-lg hover:shadow-violet-500/50"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
                 
@@ -84,33 +81,15 @@ export function DownloadCard({ platform, icon, downloadUrl, description, storeLi
                   </motion.div>
                 </div>
               </button>
-            ) : storeLinks && storeLinks.length > 0 ? (
-              // iOS 情况：第一个商店按钮（App Store）显示为主要按钮样式
-              <button
-                onClick={() => window.open(storeLinks[0].url, '_blank')}
-                className="w-full group/btn relative overflow-hidden rounded-xl px-6 py-3 min-h-[3rem] bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white transition-all duration-300 shadow-lg hover:shadow-violet-500/50"
-              >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
-                
-                <div className="relative flex items-center justify-center space-x-2">
-                  <Store className="h-4 w-4 flex-shrink-0" />
-                  <span className="text-sm whitespace-pre-line text-center leading-tight">{storeLinks[0].name}</span>
-                  <motion.div
-                    animate={{ x: isHovered ? 4 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </motion.div>
-                </div>
-              </button>
-            ) : null}
+            )}
 
-            {/* 次要按钮区域：应用商店链接 */}
+            {/* 应用商店链接 */}
             {storeLinks && storeLinks.length > 0 && (
-              <div className="w-full mt-3 space-y-2">
-                {/* 如果有 downloadUrl，显示所有商店链接；如果没有 downloadUrl，跳过第一个（已在上面显示为主要按钮） */}
-                {storeLinks.slice(downloadUrl ? 0 : 1).map((store) => (
+              <div className="w-full space-y-2">
+                {downloadUrl && (
+                  <p className="text-xs text-gray-500 text-center">{t.orGetFrom}</p>
+                )}
+                {storeLinks.map((store) => (
                   <button
                     key={store.name}
                     onClick={() => window.open(store.url, '_blank')}
@@ -122,22 +101,6 @@ export function DownloadCard({ platform, icon, downloadUrl, description, storeLi
                     </div>
                   </button>
                 ))}
-                {/* 占位元素：确保所有卡片按钮区域高度一致
-                    - 有 downloadUrl 且只有 1 个 storeLinks：需要 1 个占位（Android, Windows, Mac OS）
-                    - 没有 downloadUrl 且有 2 个 storeLinks：需要 1 个占位（iOS）
-                    - 有 downloadUrl 且有 2 个 storeLinks：不需要占位（Linux）
-                */}
-                {((downloadUrl && storeLinks.length === 1) || (!downloadUrl && storeLinks.length === 2)) && (
-                  <button
-                    className="w-full rounded-lg px-4 py-2.5 bg-white/5 border border-white/10 opacity-0 pointer-events-none invisible"
-                    disabled
-                  >
-                    <div className="flex items-center justify-center space-x-2">
-                      <Store className="h-3.5 w-3.5" />
-                      <span className="text-xs">Placeholder</span>
-                    </div>
-                  </button>
-                )}
               </div>
             )}
           </div>

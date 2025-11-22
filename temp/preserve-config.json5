@@ -1,0 +1,89 @@
+{
+  // 需要保留的配置和链接
+  "files": {
+    // App.tsx 中需要保留的内容
+    "src/App.tsx": {
+      // Google Analytics 配置
+      "googleAnalytics": {
+        "scriptSrc": "https://www.googletagmanager.com/gtag/js?id=G-K49168HFM0",
+        "configId": "G-K49168HFM0"
+      },
+      // 下载链接
+      "downloads": {
+        "android": {
+          "downloadUrl": "https://d.granoflow.com/release/app-arm64-v8a-release.apk",
+          "storeLinks": [
+            {
+              "name": "googlePlay",
+              "url": "https://play.google.com/store/apps/details?id=com.granoflow.lite"
+            }
+          ]
+        },
+        "ios": {
+          "downloadUrl": "https://apps.apple.com/app/granoflow-lite/id123456789",
+          "storeLinks": [
+            {
+              "name": "testFlight",
+              "url": "https://testflight.apple.com/join/granoflow-lite"
+            }
+          ]
+        },
+        "windows": {
+          "downloadUrl": "https://d.granoflow.com/release/granoflow-lite-windows-x64-unsigned.zip",
+          "storeLinks": [
+            {
+              "name": "microsoftStore",
+              "url": "https://www.microsoft.com/store/apps/granoflow-lite"
+            }
+          ]
+        },
+        "macos": {
+          "downloadUrl": "https://d.granoflow.com/release/granoflow-lite-macos.dmg",
+          "storeLinks": [
+            {
+              "name": "appStore",
+              "url": "https://apps.apple.com/app/granoflow-lite/id123456789"
+            }
+          ]
+        },
+        "linux": {
+          "downloadUrl": "https://d.granoflow.com/release/granoflow-lite-linux.AppImage",
+          "storeLinks": [
+            {
+              "name": "snapStore",
+              "url": "https://snapcraft.io/granoflow-lite"
+            },
+            {
+              "name": "flathub",
+              "url": "https://flathub.org/apps/com.granoflow.lite"
+            }
+          ]
+        }
+      },
+      // 页脚链接
+      "footerLinks": {
+        "privacy": "https://granoflow.github.io/granoflow-docs/privacy.html",
+        "contact": "https://github.com/granoflow/granoflow-docs"
+      },
+      // 需要保留的代码逻辑：使用 t.appName 和 t.regionName 以及 language 变量
+      "useLanguageHook": true,
+      "useDynamicTitle": true
+    },
+    // vite.config.ts 中需要保留的配置
+    "vite.config.ts": {
+      "build": {
+        "outDir": "dist",
+        "base": "/"
+      }
+    },
+    // index.html 中需要保留的内容
+    "index.html": {
+      "title": "Granoflow"
+    },
+    // package.json 中需要保留的内容
+    "package.json": {
+      "name": "granoflow"
+    }
+  }
+}
+

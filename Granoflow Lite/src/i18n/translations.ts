@@ -2,7 +2,6 @@ export type Language = 'en' | 'zh-CN' | 'zh-HK' | 'zh-TW';
 
 export interface Translations {
   appName: string;
-  regionName: string;
   tagline: string;
   description: string;
   version: string;
@@ -63,8 +62,7 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   'en': {
-    appName: 'GranoFlow',
-    regionName: 'Global',
+    appName: 'GranoFlow Lite',
     tagline: 'The BEST Task Management Tool - Incredible Focus, Tremendous Productivity!',
     description: 'Simple. Powerful. Amazing. Manage your tasks, track your time, stay in the flow. It\'s that easy, folks!',
     version: 'Latest Version',
@@ -109,7 +107,7 @@ export const translations: Record<Language, Translations> = {
     },
     stores: {
       googlePlay: 'Google Play Store',
-      appStore: 'Apple App\nStore',
+      appStore: 'App Store',
       testFlight: 'TestFlight',
       microsoftStore: 'Microsoft Store',
       snapStore: 'Snap Store',
@@ -123,8 +121,7 @@ export const translations: Record<Language, Translations> = {
     }
   },
   'zh-CN': {
-    appName: 'GranoFlow',
-    regionName: '全球',
+    appName: 'GranoFlow Lite',
     tagline: '专注于提高工作效率和专注力的任务管理工具',
     description: '简洁而强大的功能，帮助你轻松管理任务、跟踪进度，维持心流状态',
     version: '最新版本',
@@ -183,8 +180,7 @@ export const translations: Record<Language, Translations> = {
     }
   },
   'zh-HK': {
-    appName: 'GranoFlow',
-    regionName: '全球',
+    appName: 'GranoFlow Lite',
     tagline: '專注提升工作效率同專注力嘅任務管理工具',
     description: '簡潔又強大嘅功能，幫你輕鬆管理任務、追蹤進度，保持心流狀態',
     version: '最新版本',
@@ -243,8 +239,7 @@ export const translations: Record<Language, Translations> = {
     }
   },
   'zh-TW': {
-    appName: 'GranoFlow',
-    regionName: '全球',
+    appName: 'GranoFlow Lite',
     tagline: '專注於提升工作效率與專注力的任務管理工具',
     description: '簡約而不失力量的設計，助你從容管理任務、追蹤進度，維持心流的狀態',
     version: '最新版本',

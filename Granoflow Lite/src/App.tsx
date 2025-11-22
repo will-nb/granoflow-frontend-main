@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { LanguageProvider, useLanguage } from './hooks/useLanguage';
 
 function AppContent() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     document.title = t.appName;
@@ -55,13 +55,9 @@ function AppContent() {
     {
       platform: t.platforms.ios,
       icon: <Apple size={48} />,
-      downloadUrl: "", // iOS 无法直接下载，必须通过 App Store
+      downloadUrl: "https://apps.apple.com/app/granoflow-lite/id123456789",
       description: t.platformDescriptions.ios,
       storeLinks: [
-        {
-          name: t.stores.appStore,
-          url: "https://apps.apple.com/app/granoflow-lite/id123456789"
-        },
         {
           name: t.stores.testFlight,
           url: "https://testflight.apple.com/join/granoflow-lite"
@@ -186,17 +182,11 @@ function AppContent() {
           >
             <h1 className="mb-6 flex items-center justify-center flex-wrap gap-3 text-4xl md:text-5xl lg:text-6xl">
               <span className="bg-gradient-to-r from-white via-purple-200 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]">
-                {t.appName}
+                GranoFlow
               </span>
-              <motion.span
-                className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(34,211,238,0.6)]"
-                data-language={language}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                {t.regionName}
-              </motion.span>
+              <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(34,211,238,0.6)]">
+                全球
+              </span>
             </h1>
             
             <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed mb-2 text-lg">
