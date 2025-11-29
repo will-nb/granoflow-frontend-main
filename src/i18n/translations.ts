@@ -59,6 +59,13 @@ export interface Translations {
     terms: string;
     contact: string;
   };
+  beta: {
+    title: string;
+    message: string;
+    applyForBeta: string;
+    cancel: string;
+  };
+  comingSoon: string;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -101,14 +108,14 @@ export const translations: Record<Language, Translations> = {
       linux: 'Linux'
     },
     platformDescriptions: {
-      android: 'For Android 11 and above',
+      android: 'For Android 14 and above',
       ios: 'For iOS 15 and above',
       windows: 'For Windows 10 and above',
       macos: 'For macOS 12+ (Apple Silicon only)',
       linux: 'For Linux (AppImage)'
     },
     stores: {
-      googlePlay: 'Google Play Store',
+      googlePlay: 'Apply for Beta Testing',
       appStore: 'Apple App\nStore',
       testFlight: 'TestFlight',
       microsoftStore: 'Microsoft Store',
@@ -120,7 +127,14 @@ export const translations: Record<Language, Translations> = {
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       contact: 'Contact Us'
-    }
+    },
+    beta: {
+      title: 'Google Play Beta Testing',
+      message: 'This app is currently in beta testing. You need to join the beta testing group with your Google Play account to access it.',
+      applyForBeta: 'Apply for Beta Testing',
+      cancel: 'Cancel'
+    },
+    comingSoon: 'Coming Soon'
   },
   'zh-CN': {
     appName: 'GranoFlow',
@@ -161,14 +175,14 @@ export const translations: Record<Language, Translations> = {
       linux: 'Linux'
     },
     platformDescriptions: {
-      android: '适用于 Android 11 及以上版本',
+      android: '适用于 Android 14 及以上版本',
       ios: '适用于 iOS 15 及以上版本',
       windows: '适用于 Windows 10 及以上版本',
       macos: '适用于 macOS 12+（仅限 Apple Silicon）',
       linux: '适用于 Linux (AppImage)'
     },
     stores: {
-      googlePlay: 'Google Play Store',
+      googlePlay: '申请内测',
       appStore: 'App Store',
       testFlight: 'TestFlight',
       microsoftStore: 'Microsoft Store',
@@ -180,7 +194,14 @@ export const translations: Record<Language, Translations> = {
       privacy: '隐私政策',
       terms: '使用条款',
       contact: '联系我们'
-    }
+    },
+    beta: {
+      title: 'Google Play 内测',
+      message: '此应用目前处于内测阶段，需要用您的 Google Play 账号加入内测邮件群组。',
+      applyForBeta: '申请内测',
+      cancel: '取消'
+    },
+    comingSoon: '敬请期待'
   },
   'zh-HK': {
     appName: 'GranoFlow',
@@ -221,14 +242,14 @@ export const translations: Record<Language, Translations> = {
       linux: 'Linux'
     },
     platformDescriptions: {
-      android: '適用於 Android 11 及以上版本',
+      android: '適用於 Android 14 及以上版本',
       ios: '適用於 iOS 15 及以上版本',
       windows: '適用於 Windows 10 及以上版本',
       macos: '適用於 macOS 12+（僅限 Apple Silicon）',
       linux: '適用於 Linux (AppImage)'
     },
     stores: {
-      googlePlay: 'Google Play Store',
+      googlePlay: '申請內測',
       appStore: 'App Store',
       testFlight: 'TestFlight',
       microsoftStore: 'Microsoft Store',
@@ -240,7 +261,14 @@ export const translations: Record<Language, Translations> = {
       privacy: '私隱政策',
       terms: '使用條款',
       contact: '聯絡我哋'
-    }
+    },
+    beta: {
+      title: 'Google Play 內測',
+      message: '此應用目前處於內測階段，需要用您的 Google Play 帳號加入內測郵件群組。',
+      applyForBeta: '申請內測',
+      cancel: '取消'
+    },
+    comingSoon: '敬請期待'
   },
   'zh-TW': {
     appName: 'GranoFlow',
@@ -281,14 +309,14 @@ export const translations: Record<Language, Translations> = {
       linux: 'Linux'
     },
     platformDescriptions: {
-      android: '適用於 Android 11 及以上版本',
+      android: '適用於 Android 14 及以上版本',
       ios: '適用於 iOS 15 及以上版本',
       windows: '適用於 Windows 10 及以上版本',
       macos: '適用於 macOS 12+（僅限 Apple Silicon）',
       linux: '適用於 Linux (AppImage)'
     },
     stores: {
-      googlePlay: 'Google Play Store',
+      googlePlay: '申請內測',
       appStore: 'App Store',
       testFlight: 'TestFlight',
       microsoftStore: 'Microsoft Store',
@@ -300,7 +328,14 @@ export const translations: Record<Language, Translations> = {
       privacy: '隱私權政策',
       terms: '使用條款',
       contact: '聯繫我們'
-    }
+    },
+    beta: {
+      title: 'Google Play 內測',
+      message: '此應用目前處於內測階段，需要用您的 Google Play 帳號加入內測郵件群組。',
+      applyForBeta: '申請內測',
+      cancel: '取消'
+    },
+    comingSoon: '敬請期待'
   }
 };
 

@@ -1963,3 +1963,9 @@ html {
     transform: scale(2);
   }
 }
+
+@layer utilities {
+  .cursor-pointer {
+    cursor: pointer;
+  }
+}

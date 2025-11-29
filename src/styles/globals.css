@@ -187,3 +187,9 @@
 html {
   font-size: var(--font-size);
 }
+
+@layer utilities {
+  .cursor-pointer {
+    cursor: pointer;
+  }
+}

@@ -1,18 +1,38 @@
 import { DownloadCard } from "./components/DownloadCard";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { TuxIcon } from "./components/TuxIcon";
+import { GeoBlockModal } from "./components/GeoBlockModal";
 import { Monitor, Apple, Smartphone, Zap, Lock, Clock, Heart, Sparkles } from "lucide-react";
 import logo from 'figma:asset/712b2a945033a7b6ba74878dfb55cbe9f1c0020e.png';
 import { motion } from 'motion/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { LanguageProvider, useLanguage } from './hooks/useLanguage';
+import { detectCountry, isCountryBlocked, redirectToChinaSite } from './utils/geoBlock';
 
 function AppContent() {
   const { t, language } = useLanguage();
+  const [isBlocked, setIsBlocked] = useState(false);
 
   useEffect(() => {
     document.title = t.appName;
   }, [t]);
+
+  // Geo blocking detection
+  useEffect(() => {
+    const checkGeoBlock = async () => {
+      try {
+        const country = await detectCountry();
+        if (isCountryBlocked(country)) {
+          setIsBlocked(true);
+        }
+      } catch (error) {
+        // Graceful degradation: if detection fails, don't block
+        console.warn('Geo blocking check failed, allowing access:', error);
+      }
+    };
+
+    checkGeoBlock();
+  }, []);
 
   // Google Analytics
   useEffect(() => {
@@ -71,7 +91,7 @@ function AppContent() {
     {
       platform: t.platforms.windows,
       icon: <Monitor size={48} />,
-      downloadUrl: "https://d.granoflow.com/release/granoflow-lite-windows-x64-unsigned.zip",
+      downloadUrl: "https://github.com/granoflow/granoflow-docs/releases/download/cn-latest/granoflow-cn-windows.msix",
       description: t.platformDescriptions.windows,
       storeLinks: [
         {
@@ -95,7 +115,7 @@ function AppContent() {
     {
       platform: t.platforms.linux,
       icon: <TuxIcon size={48} />,
-      downloadUrl: "https://d.granoflow.com/release/granoflow-lite-linux.AppImage",
+      downloadUrl: "https://github.com/granoflow/granoflow-docs/releases/download/global-v0.1.3/granoflow-global-linux.AppImage",
       description: t.platformDescriptions.linux,
       storeLinks: [
         {
@@ -138,7 +158,14 @@ function AppContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
+    <>
+      {/* Geo Blocking Modal */}
+      <GeoBlockModal 
+        isBlocked={isBlocked} 
+        onRedirect={redirectToChinaSite}
+      />
+
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 relative overflow-hidden">
       {/* 背景装饰 */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(56,189,248,0.15),rgba(255,255,255,0))]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.1),rgba(255,255,255,0))]"></div>
@@ -212,10 +239,10 @@ function AppContent() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 shadow-lg shadow-green-500/50"></span>
                 </span>
-                <span className="text-gray-300 text-sm">{t.version}: V0.1.0</span>
+                <span className="text-gray-300 text-sm">{t.version}: V0.1.3</span>
               </div>
               <span className="text-gray-600">•</span>
-              <span className="text-gray-400 text-sm">{t.updatedOn} 2025-11-16</span>
+              <span className="text-gray-400 text-sm">{t.updatedOn} 2025-11-28</span>
             </div>
           </motion.div>
         </motion.div>
@@ -330,6 +357,7 @@ function AppContent() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }
 

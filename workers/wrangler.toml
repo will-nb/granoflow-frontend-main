@@ -1,0 +1,26 @@
+# Cloudflare Worker Configuration
+# 
+# To deploy this worker:
+# 1. Install wrangler: npm install -g wrangler
+# 2. Login: wrangler login
+# 3. Deploy: wrangler deploy
+#
+# Or use Cloudflare Dashboard to create a new Worker and paste the code from geo-country.js
+
+name = "granoflow-geo-country"
+main = "geo-country.js"
+compatibility_date = "2024-01-01"
+
+# Route configuration
+# Uncomment and configure the route where you want this worker to be accessible
+# For example, if your domain is example.com, you can set:
+# routes = [
+#   { pattern = "example.com/geo", zone_name = "example.com" },
+#   { pattern = "example.com/api/geo-country", zone_name = "example.com" }
+# ]
+
+# Or use a custom domain/route
+# You can also set this up in the Cloudflare Dashboard under Workers & Pages
+
+
+
